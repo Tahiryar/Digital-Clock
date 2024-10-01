@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <h2 id="Digital_Clock">00:00:00</h2>
+    <script>
+        let hour = 0;
+        let min = 0;
+        let sec = 0;
+
+        function update() {
+            sec++;
+            if (sec === 60) {
+                sec = 0;
+                min++;
+                if (min === 60) {
+                    min = 0;
+                    hour++;
+                }
+            }
+
+            // Format time to two digits
+            const formathour = String(hour).padStart(2, '0');
+            const formatmin = String(min).padStart(2, '0');
+            const formatsec = String(sec).padStart(2, '0');
+
+            document.getElementById("Digital_Clock").textContent = `${formathour}:${formatmin}:${formatsec}`;
+        }
+
+        // Update the clock every second
+        setInterval(update, 1000);
+    </script>
+</body>
+</html>
